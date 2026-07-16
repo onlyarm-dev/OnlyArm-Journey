@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Manrope", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --background: #fefefe;
+  --foreground: #20201f;
+  --card: #ffffff;
+  --card-foreground: #20201f;
+  --primary: #6558d8;
+  --primary-foreground: #ffffff;
+  --secondary: #f0ede7;
+  --secondary-foreground: #292724;
+  --muted: #f4f1eb;
+  --muted-foreground: #77736d;
+  --border: #e8e3da;
+  --ring: #887de9;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #f5f2ec;
+  --card: #1d1d1b;
+  --card-foreground: #f5f2ec;
+  --primary: #a99ef5;
+  --primary-foreground: #17151f;
+  --secondary: #292824;
+  --secondary-foreground: #f5f2ec;
+  --muted: #24231f;
+  --muted-foreground: #aaa59d;
+  --border: #34322d;
+  --ring: #a99ef5;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 24%, transparent);
+}
+
+/* Shared page width */
+.page-wrap {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+/* Soft background grid */
+.soft-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--border) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 45%, transparent) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, black 35%, transparent 100%);
+}
+
+@media (min-width: 768px) {
+  .page-wrap {
+    width: min(100% - 4rem, 72rem);
+  }
+}
