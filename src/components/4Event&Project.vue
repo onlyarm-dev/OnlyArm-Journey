@@ -57,7 +57,18 @@
             <Image v-else class="size-8 opacity-40" />
           </div>
           <div class="p-4 pb-3">
-            <h3 class="font-bold">{{ project.title }}</h3>
+            <h3 class="font-bold">
+              <a
+                v-if="project.url"
+                :href="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="transition-colors hover:text-primary hover:underline"
+              >
+                {{ project.title }}
+              </a>
+              <template v-else>{{ project.title }}</template>
+            </h3>
             <p class="mt-1 text-sm text-muted-foreground">{{ project.type }} · {{ project.year }}</p>
           </div>
         </Card>
@@ -99,6 +110,7 @@ interface ProjectItem {
   title: string
   type: string
   year: string
+  url?: string
   images?: string[]
   tone: string
 }
@@ -116,9 +128,15 @@ const projects: ProjectItem[] = [
     tone: 'from-[#ded8ff] to-[#f1efff] dark:from-[#393258] dark:to-[#252238]',
   },
   {
-    title: 'Project One',
+    title: 'OnlyArm Shop / E-Commerce',
     type: 'Side Project',
     year: '2026',
+    url: 'https://order-flow-e-commerce-order-management.vercel.app/',
+    images: [
+      '/images/project/OnlyArmShop1.png',
+      '/images/project/OnlyArmShop2.png',
+      '/images/project/OnlyArmShop3.png',
+    ],
     tone: 'from-[#d3eee4] to-[#eef8f4] dark:from-[#29483d] dark:to-[#202f2a]',
   },
   {
